@@ -1,0 +1,17 @@
+.bash*
+.cache
+.config
+.dmrc
+.gnupg
+.ICEauthority
+.icons
+.lesshst
+.local
+.mozilla
+.pki
+.profile
+snap
+.themes
+.Xauthority
+.xsession*
+
