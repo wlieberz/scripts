@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# Back-up MySQL, keeping on the latest 3 dump files. 
+# Back-up MySQL, keeping on the latest 3 back-up files. 
+
+# Current script removes all but the latest 3 back-up files, regardless of age.
+# If we know in advance the retention period we could do something like this for the removal: 
+# find $backup_path  -mindepth 1 -mtime +5 -delete
+
 
 #### VARS:
 # SQLDUMP PARAMS:
