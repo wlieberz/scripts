@@ -10,10 +10,10 @@
 
 # ----------- VARS ------------- #
 
-bak_disk_uuid=a5a91dad-b079-4e64-b71a-ff86712f3d8b # Substitute with your UUID.
+bak_disk_uuid=88946926-7c75-40da-bd50-c31c592c6591 # Substitute with your UUID.
 # If your backup disk is sdc1 you can get your uuid with: sudo blkid /dev/sdc1
-bak_disk_mount_point=/mnt/external-btrfs-1
-bak_disk_checkfile=external-btrfs-1_is-mounted.txt
+bak_disk_mount_point=/mnt/external-btrfs-2
+bak_disk_checkfile=external-btrfs-2_is-mounted.txt
 
 local_snapshots_dir=/snapshots
 today_timestamp=$(date +%Y%m%d) # e.g. on Dec 28 2020, looks like: 20201228
@@ -23,7 +23,16 @@ parent_snapshot=$(ls -1t $local_snapshots_dir | tail -n 1)
 
 oldest_local_snap=$(ls -1t $local_snapshots_dir | head -n 1)
 
+num_snapshots=$(find /snapshots/ -maxdepth 1 -mindepth 1 -type d  | wc -l)
+
 # ---------- MAIN -------------- #
+
+# Quick safety check:
+if (( $num_snapshots != 2 ))
+  then
+    echo "Bailing! Script assumes two local snapshots exist."
+    exit 1
+fi
 
 # Mount backup drive:
 sudo mount /dev/disk/by-uuid/$bak_disk_uuid $bak_disk_mount_point 
