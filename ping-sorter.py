@@ -2,7 +2,7 @@
 
 # Author: William Lieberz
 # Date: 2021-07-30
-# Version: 1.0
+# Version: 1.1
 #
 # Description:
 # Simple helper utility. Given a file with one hostname per line, 
@@ -42,6 +42,8 @@ def main():
     
     with open(args.file, 'r') as parse_file:    
         for host in parse_file:
+            if host.startswith("#"):
+                continue
             lookup_query = ["nslookup", host.rstrip()]
             dns_lookup = subprocess.run(lookup_query)
             if dns_lookup.returncode != 0:
