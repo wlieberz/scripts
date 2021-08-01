@@ -1,0 +1,18 @@
+# Good:
+google.com
+bing.com
+yahoo.com
+# Bad DNS:
+nonextant1.blah.home.arpa
+nonextant2.blah.home.arpa
+nonextant3.blah.home.arpa
+# Bad ping, but good nslookup. 
+# For this to work, these should be in your /etc/hosts
+# assuming nothing on your network would respond to a ping on 10.0.2.254, 
+# add to your /etc/hosts (without comments, of course):
+# 10.0.2.254 downhost1.blah.home.arpa
+# 10.0.2.254 downhost2.blah.home.arpa
+# 10.0.2.254 downhost3.blah.home.arpa
+downhost1.blah.home.arpa
+downhost2.blah.home.arpa
+downhost3.blah.home.arpa
