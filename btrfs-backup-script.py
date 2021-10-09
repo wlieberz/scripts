@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# v1.0.1
+# v1.0.2
 
 import os, sys, datetime, platform
 
@@ -14,10 +14,9 @@ backup_disk_mount_point = "/mnt/external-btrfs-2"
 backup_disk_checkfile = "external-btrfs-2_is-mounted.txt"
 
 ct = datetime.datetime.now()
-today_time = ct.strftime("%Y%m%d")
+today_time = ct.strftime("%Y%m%d%H%M")
 
 today_snap_path = f'{local_snaps_dir}/home-{today_time}'
-today_snap_cmd = f'sudo btrfs subvolume snapshot -r /home {today_snap_path}'
 
 # _________________________ Functions:
 
@@ -44,6 +43,7 @@ def get_parent_snap():
     print(f'Found parent snapshot: {parent_snap}')
 
 def do_today_snap():
+    today_snap_cmd = f'sudo btrfs subvolume snapshot -r /home {today_snap_path}'
     if not os.path.exists(today_snap_path):
         print("Taking today's snapshot.")
         os.system(today_snap_cmd)
