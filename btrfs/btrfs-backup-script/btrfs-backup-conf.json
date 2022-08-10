@@ -1,0 +1,7 @@
+{
+  "local_snaps_dir"         : "/snapshots",
+  "dev_by_uuid"             : "/dev/disk/by-uuid",
+  "backup_disk_uuid"        : "YOUR DISK UUID HERE",
+  "backup_disk_mount_point" : "/mnt/your-backup-disk-friendly-name",
+  "backup_disk_checkfile"   : "your-backup-disk_is-mounted.txt"
+}
