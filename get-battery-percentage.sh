@@ -7,6 +7,6 @@ battery=$(upower -e | grep 'BAT')
 
 echo "$battery"
 
-upower -i $battery | grep percentage
+upower -i $battery | grep -E "percentage|time"
 
 exit
